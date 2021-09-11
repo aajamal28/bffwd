@@ -3,6 +3,7 @@ import './user-item.js'
 class UserList extends HTMLElement {
     set users (users) {
         this._users = users;
+        console.log(users);
         this.render();
     }
 

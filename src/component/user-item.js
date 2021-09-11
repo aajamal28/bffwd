@@ -3,6 +3,7 @@ import { DataSource } from "../data/source";
 class UserItem extends HTMLElement {
   set user(user) {
     this._user = user;
+    console.log(user);
     this.render();
   }
 
@@ -35,15 +36,6 @@ class UserItem extends HTMLElement {
         </div>
       </div>
         `;
-
-    // const cardUser = this.querySelector(".card-title");
-    // cardUser.addEventListener("click", function () {
-    //   //const userLogin = this.getAttribute("data-id");
-    //   const userLogin = cardUser.innerHTML; 
-    //   //alert(userLogin);
-    //   const modal = new bootstrap.modal( document.getElementsByClassName('modal'));
-    //   modal.modal('show');
-    // });
   }
 }
 

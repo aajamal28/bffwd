@@ -1,5 +1,5 @@
 const url = "https://api.github.com/";
-const token_key = "token e23f1a67d60230d11eb88b0083e8d2c3341f3708";
+const token_key = "afdadf";
 const myHeaders = new Headers({
   "User-Agent": "request",
   Authorization: `${token_key}`,
