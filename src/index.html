@@ -1,34 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GitBook</title>
+    <style>
+      .jumbotron {
+        padding: 30px;
+        background-color: #5b5e5b4f;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>GitBook</title>
-  <style>
-    .jumbotron {
-      padding: 30px;
-      background-color: #5b5e5b4f;
-    }
-  </style>
-</head>
+  <body>
+    <header>
+      <app-bar />
+    </header>
+    <main class="container">
+      <div class="jumbotron mt-0">
+        <h1>GitBook Apps.</h1>
+        <p>Dicoding - Belajar Fundamental Front-End Web Development</p>
+        <search-bar></search-bar>
+      </div>
+      <h4 id="result-text" class="mt-5 text-muted"></h4>
+      <user-list></user-list>
+      <div id="loader-text" class="loader text-center loader-default is-active">
+        <h3 class="loader-message">Loading</h3>
+      </div>
+    </main>
 
-<body>
-  <header>
-    <app-bar />
-  </header>
-  <main class="container">
-    <div class="jumbotron mt-0">
-      <h1>GitBook Apps.</h1>
-      <p>Dicoding - Belajar Fundamental Front-End Web Development</p>
-      <search-bar></search-bar>
-    </div>
-    <h4 id="result-text" class="mt-5 text-muted"></h4>
-    <user-list />
-    <div id="loader-text" class="loader loader-default is-active">
-      <div class="loader-message">Loading</div>
-    </div>
-  </main>
-</body>
+    <section class="container mt-3" id="detailUser" style="display: none;">
+      <div class="card card-secondary mb-2">
+        <detail-header></detail-header>
+        <div class="card-body">
+          <detail-body></detail-body>
+          <hr />
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <div class="card border-primary">
+                <div class="card-header">
+                  <h5 class="card-title text-success">Follower</h5>
+                </div>
+                <div class="card-body scroll">
+                  <user-follower></user-follower>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 text-center">
+              <div class="card border-primary">
+                <div class="card-header">
+                  <h5 class="card-title text-success">Following</h5>
+                </div>
+                <div class="card-body scroll">
+                  <user-following></user-following>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+  </body>
 </html>

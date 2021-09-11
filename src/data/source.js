@@ -1,5 +1,5 @@
 const url = "https://api.github.com/";
-const token_key = "afdadfscsdsd";
+const token_key = "";
 const myHeaders = new Headers({
   "User-Agent": "request",
   Authorization: `${token_key}`,
@@ -24,6 +24,38 @@ class DataSource {
   
   static getUserDetail(user) {
     return fetch(`${url}users/${user}`, {
+      headers: myHeaders,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseJson) => {
+        if (responseJson) {
+          return Promise.resolve(responseJson);
+      } else {
+          return Promise.reject(`${user} is not found`)
+      }
+      });
+  }
+
+  static getUserFollowers(user) {
+    return fetch(`${url}users/${user}/followers`, {
+      headers: myHeaders,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((responseJson) => {
+        if (responseJson) {
+          return Promise.resolve(responseJson);
+      } else {
+          return Promise.reject(`${user} is not found`)
+      }
+      });
+  }
+
+  static getUserFollowing(user) {
+    return fetch(`${url}users/${user}/following`, {
       headers: myHeaders,
     })
       .then((response) => {

@@ -1,9 +1,10 @@
+import '../component/detail-header';
+import '../component/detail-body';
 import { DataSource } from "../data/source";
 
 class UserItem extends HTMLElement {
   set user(user) {
     this._user = user;
-    console.log(user);
     this.render();
   }
 
@@ -28,14 +29,65 @@ class UserItem extends HTMLElement {
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h3 class="card-title text-success">${this._user.login}</h3>
-              <p class="card-text"><a href ="${this._user.html_url}" target="_blank"><small class="text-muted">${this._user.html_url}</small></a></p>
+              <h3 class="card-title text-success mt-4">${this._user.login}</h3>
+              
               <hr/>
               </div>
           </div>
         </div>
       </div>
         `;
+
+    const loaderElement = document.querySelector("#loader-text");
+    loaderElement.style.display = "none";
+
+    const detailGitlUser = async (user) => {
+      loaderElement.style.display = "block";
+      try {
+        const result = await DataSource.getUserDetail(user);
+        renderResult(result);
+      } catch (message) {
+        fallbackResult(message);
+      }
+    };
+
+    const renderResult = res => {
+      loaderElement.style.display = "none";
+      console.log(res);
+      $('main').hide();
+      $('#detailUser').show();
+
+      //$('#ImgUser').attr('src', res.avatar_url);
+
+      const dtHeader = document.querySelector("detail-header");
+      dtHeader.update = res.login;
+
+      const dtBody = document.querySelector("detail-body");
+      const dataBody = {
+        'login' : res.login,
+        'name' : res.name,
+        'location' : res.location,
+        'company' : res.company,
+        'follower' : res.followers,
+        'following' : res.following,
+        'url' : res.html_url,
+        'repos' : res.public_repos,
+        'avatar' : res.avatar_url
+      };
+      dtBody.update = dataBody;
+    };
+
+    const fallbackResult = message => {
+      loaderElement.style.display = 'none';
+      alert(message);
+  };
+
+    const cardItem = this.querySelector('.card-user');
+    cardItem.addEventListener("click", function() {
+      detailGitlUser(this.getAttribute('data-id'));
+    });
+
+
   }
 }
 
