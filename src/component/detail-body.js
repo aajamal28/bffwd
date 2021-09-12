@@ -1,4 +1,5 @@
 import "../component/user-follower-list.js";
+import "../component/user-following-list.js"
 import { DataSource } from "../data/source.js";
 
 class detailBody extends HTMLElement {
@@ -16,7 +17,7 @@ class detailBody extends HTMLElement {
   }
 
   render() {
-    const userFollowersElement = this.querySelector("user-follower");
+    const userFollowersElement = document.querySelector("user-followers");
     const userFollowingElement = document.querySelector("user-following");
 
     this.innerHTML = `
@@ -66,24 +67,30 @@ class detailBody extends HTMLElement {
       }
     };
 
-    // const getUserFollowing = async (user) => {
-    //   try {
-    //     const result = await DataSource.getUserFollowing(user);
-    //     renderResult(result);
-    //   } catch (message) {
-    //     fallbackResult(message);
-    //   }
-    // };
+    const getUserFollowing = async (user) => {
+      try {
+        const result = await DataSource.getUserFollowing(user);
+        renderFollowing(result);
+      } catch (message) {
+        fallbackResult(message);
+      }
+    };
 
     const renderFollower = (results) => {
-      userFollowersElement.update = results ? results : 'NaN';
+      userFollowersElement.user = results ;
     };
+
+    const renderFollowing = (results) => {
+      userFollowingElement.user = results ;
+    };
+
 
     const fallbackResult = message => {
       console.log(message);
     };
 
     getUserFollowers(this.login);
+    getUserFollowing(this.login);
   }
 }
 

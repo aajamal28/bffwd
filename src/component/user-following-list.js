@@ -1,6 +1,6 @@
 import './user-item.js'
 
-class UserFollowerList extends HTMLElement {
+class UserFollowingList extends HTMLElement {
     set user (users) {
         this._users = users;
         this.render();
@@ -27,4 +27,4 @@ class UserFollowerList extends HTMLElement {
     }
 }
 
-customElements.define("user-followers", UserFollowerList);
+customElements.define("user-following", UserFollowingList);

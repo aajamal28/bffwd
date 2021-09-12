@@ -33,7 +33,7 @@ img {
 }
 
 .scroll {
-  max-height: 550px;
+  max-height: 450px;
   overflow-y: auto;
 }
 
@@ -41,6 +41,11 @@ img {
 .card-tools {
   float: right;
 }
+
+.flex {
+  display: flex;
+}
+
 
 @media only screen and (max-width: 600px) {
   main {

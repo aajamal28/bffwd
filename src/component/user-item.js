@@ -57,8 +57,6 @@ class UserItem extends HTMLElement {
       $('main').hide();
       $('#detailUser').show();
 
-      //$('#ImgUser').attr('src', res.avatar_url);
-
       const dtHeader = document.querySelector("detail-header");
       dtHeader.update = res.login;
 
